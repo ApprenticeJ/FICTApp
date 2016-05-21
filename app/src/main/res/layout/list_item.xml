@@ -67,6 +67,8 @@
                         android:layout_toRightOf="@+id/time"
                         android:layout_toEndOf="@+id/time"
                         android:layout_marginLeft="5dp"/>
+
+
                 </RelativeLayout>
 
                 <RelativeLayout

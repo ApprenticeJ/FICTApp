@@ -2,10 +2,14 @@ package com.example.owner.fictapp;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -29,7 +33,7 @@ import java.util.HashMap;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class MainActivity extends ListActivity
+public class MainActivity extends AppCompatActivity
 {
     final String TAG="MainActivity.java";
     private ProgressDialog progressDialog;
@@ -51,6 +55,7 @@ public class MainActivity extends ListActivity
 
     // events JSONArray
     JSONArray events = null;
+    ListView lv;
 
     // Hashmap for ListView
     ArrayList<HashMap<String, String>> eventList;
@@ -61,7 +66,20 @@ public class MainActivity extends ListActivity
         //this.url="http://jsonip.com";
         this.url="http://gaptwebsite.azurewebsites.net/api/news";
         //this.url="https://graph.facebook.com/v2.6/1048199811920977/events/?&access_token=EAACEdEose0cBAOGylIaU5xkyntpy7ZB4OLgZCkLcgtpSXBdbPOZAMQlZBx5wikPZAS9jpr5MsIN0EYQVcckjh1dZBTiHLJDjA9939V4b3zOcABIcsZAsV2zXGzYELKi7IEuViePqdatxWb4vh8lfzUCmm06W3UVvmgwyPpznOSteAZDZD";
-        ListView lv = getListView();
+        lv = (ListView) findViewById(R.id.listview1);
+
+        Button b=(Button) findViewById(R.id.button);
+
+            b.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
+                    Intent i = new Intent(getApplicationContext(),Timetable.class);
+                    startActivity(i);
+                }
+            });
+
         // where we will store the events
         eventList = new ArrayList<HashMap<String, String>>();
 
@@ -203,6 +221,7 @@ public class MainActivity extends ListActivity
 
 
 
+
                         // tmp hashmap for single event
                         HashMap<String, String> event = new HashMap<String, String>();
 
@@ -259,7 +278,7 @@ public class MainActivity extends ListActivity
                     }
             );
 
-            setListAdapter(adapter);
+            lv.setAdapter(adapter);
 
         }
 
