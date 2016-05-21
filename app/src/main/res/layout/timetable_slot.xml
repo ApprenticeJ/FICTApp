@@ -22,26 +22,52 @@
             android:paddingLeft="@dimen/feed_item_padding_left_right"
             android:paddingRight="@dimen/feed_item_padding_left_right" >
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/feed_item_profile_info_padd" >
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/time"
+                    android:id="@+id/time"
+                    />
 
                 <TextView
                     android:id="@+id/time2"
-                    android:layout_width="fill_parent"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/timestamp"
-                    android:textSize="@dimen/feed_item_timestamp"/>
+                    android:textSize="@dimen/feed_item_timestamp"
+                    android:layout_toRightOf="@id/time"
+                    android:paddingLeft="10dp"/>
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/location"
+                    android:id="@+id/locationimg"
+                    android:layout_toRightOf="@id/time2"/>
+
+                <TextView
+                    android:id="@+id/location2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/locationimg"
+                    android:textColor="@color/timestamp"
+                    android:textSize="@dimen/feed_item_timestamp"
+                    android:paddingLeft="10dp"/>/>
 
                 <TextView
                     android:id="@+id/name2"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/feed_item_profile_name"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    android:textStyle="bold"
+                    android:layout_below="@id/time2"
+                    android:paddingTop="10dp"/>
+            </RelativeLayout>
 
 
         </LinearLayout>

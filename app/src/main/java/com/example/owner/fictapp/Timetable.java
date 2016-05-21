@@ -1,46 +1,25 @@
 package com.example.owner.fictapp;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
+/**
+ * Created by Julian on 21/05/2016.
+ */
 public class Timetable extends AppCompatActivity {
-    ArrayList<HashMap<String, String>> time=new ArrayList<HashMap<String, String>>();
-    ListView lv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timetable);
-        lv = (ListView) findViewById(R.id.listView);
+        setContentView(R.layout.activity_timetable2);
 
-        HashMap<String, String> event = new HashMap<String, String>();
+        ViewPager viewPager = (ViewPager) findViewById(R.id.unitpager1);
+        viewPager.setAdapter(new TimetableAdapter(getSupportFragmentManager(),
+                Timetable.this));
 
-        event.put("Time", "8:00:00");
-        event.put("Course","CIS1111");
-        time.add(event);
-
-        // update parsed data into ListView
-        ListAdapter adapter = new SimpleAdapter(
-                Timetable.this,
-                time,
-                R.layout.timetable_slot,
-                new String[] {
-                        "Time",
-                        "Course"
-                },
-                new int[] {
-                       R.id.time2,
-                        R.id.name2
-                }
-        );
-
-        lv.setAdapter(adapter);
-
-
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.unittabs1);
+        tabLayout.setupWithViewPager(viewPager);
     }
 }
+
