@@ -47,25 +47,25 @@ public class Courses extends AppCompatActivity {
 
         new GetCourses().execute();
 
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        Intent intent = new Intent(Courses.this, Units.class);
+                        Intent intent = new Intent(Courses.this, StudyUnits.class);
                         intent.putExtra("id", cId);
                         startActivity(intent);
                         break;
 
-                    case 1:
-                        //Intent newsActivity = new Intent(MainActivity.this, NewsActivity.class); //When the second item in ListView is pressed, NewsActivity is launched
-                        //startActivity(newsActivity);
-                        break;
+                    /*case 1:
+                        Intent newsActivity = new Intent(MainActivity.this, NewsActivity.class); //When the second item in ListView is pressed, NewsActivity is launched
+                        startActivity(newsActivity);
+                        break;*/
 
 
                 }
             }
-        });*/
+        });
     }
 
     private class GetCourses extends AsyncTask<Void, Void, Void> {
