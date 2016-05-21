@@ -22,7 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Timetable"></activity>
+        <activity android:name=".Timetable" />
+        <activity android:name=".Courses"></activity>
     </application>
 
 </manifest>
