@@ -24,7 +24,9 @@
         </activity>
         <activity android:name=".Courses" />
         <activity android:name=".StudyUnits" />
-        <activity android:name=".Timetable"></activity>
+        <activity android:name=".Timetable" />
+        <activity android:name=".Lecturers" />
+        <activity android:name=".UnitDetails"></activity>
     </application>
 
 </manifest>

@@ -44,7 +44,6 @@ public class Courses extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_courses);
-
         this.url = "http://gaptwebsite.azurewebsites.net/api/Course";
         listView = (ListView) findViewById(R.id.listView2);
 
@@ -53,24 +52,10 @@ public class Courses extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                /*switch (position) {
-                    case 0: id2 = "CCE";
-                        break;
-                    case 1: id2 = "CIS";
-                        break;
-                    case 2: id2 = "CPS";
-                        break;
-                    case 3: id2 = "ICS";
-                        break;
-                }*/
                 Intent intent = new Intent(Courses.this, StudyUnits.class);
                 Bundle b = new Bundle();
                 b.putString("id", coursesID.get(position));
                 intent.putExtras(b);
-                //UnitFragment unitFragment = new UnitFragment();
-                //Bundle args = new Bundle();
-                //args.putString("id", id2);
-                //unitFragment.setArguments(args);
                 startActivity(intent);
                 finish();
 
@@ -102,7 +87,8 @@ public class Courses extends AppCompatActivity {
 
                         JSONObject c = courses.getJSONObject(i);
 
-                        coursesID.add(c.getString(TAG_ID));
+                        cId = (c.getString(TAG_ID));
+                        coursesID.add(cId);
                         String name = c.getString(TAG_Name);
                         String nID = cId + name;
                         String description = c.getString(TAG_Description);

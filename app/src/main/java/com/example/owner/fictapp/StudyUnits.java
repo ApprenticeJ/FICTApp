@@ -28,9 +28,6 @@ public class StudyUnits extends AppCompatActivity {
                 StudyUnits.this));
         TabLayout tabLayout = (TabLayout) findViewById(R.id.unittabs);
         tabLayout.setupWithViewPager(viewPager);
-
-
-        //finish();
     }
 
 
