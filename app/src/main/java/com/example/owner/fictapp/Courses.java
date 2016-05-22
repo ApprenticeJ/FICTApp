@@ -28,11 +28,14 @@ public class Courses extends AppCompatActivity {
     private ProgressDialog prog;
     private static String url = " ";
     private static String cId = " ";
+    private static String id2 = " ";
+    private static ArrayList<String> coursesID = new ArrayList<String>();
     ArrayList<HashMap<String, String>> coursesList = new ArrayList<HashMap<String, String>>(); //ArrayList of all courses
 
     private static final String TAG_ID = "CourseID";
     private static final String TAG_Name = "CourseName";
     private static final String TAG_Description = "CourseDescription";
+
 
     ListView listView;
     JSONArray courses = null;
@@ -50,20 +53,27 @@ public class Courses extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                        Intent intent = new Intent(Courses.this, StudyUnits.class);
-                        intent.putExtra("id", cId);
-                        startActivity(intent);
+                /*switch (position) {
+                    case 0: id2 = "CCE";
                         break;
+                    case 1: id2 = "CIS";
+                        break;
+                    case 2: id2 = "CPS";
+                        break;
+                    case 3: id2 = "ICS";
+                        break;
+                }*/
+                Intent intent = new Intent(Courses.this, StudyUnits.class);
+                Bundle b = new Bundle();
+                b.putString("id", coursesID.get(position));
+                intent.putExtras(b);
+                //UnitFragment unitFragment = new UnitFragment();
+                //Bundle args = new Bundle();
+                //args.putString("id", id2);
+                //unitFragment.setArguments(args);
+                startActivity(intent);
+                finish();
 
-                    /*case 1:
-                        Intent newsActivity = new Intent(MainActivity.this, NewsActivity.class); //When the second item in ListView is pressed, NewsActivity is launched
-                        startActivity(newsActivity);
-                        break;*/
-
-
-                }
             }
         });
     }
@@ -92,7 +102,7 @@ public class Courses extends AppCompatActivity {
 
                         JSONObject c = courses.getJSONObject(i);
 
-                        cId = c.getString(TAG_ID);
+                        coursesID.add(c.getString(TAG_ID));
                         String name = c.getString(TAG_Name);
                         String nID = cId + name;
                         String description = c.getString(TAG_Description);

@@ -22,22 +22,39 @@
             android:paddingLeft="@dimen/feed_item_padding_left_right"
             android:paddingRight="@dimen/feed_item_padding_left_right" >
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/feed_item_profile_info_padd" >
 
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/nextarrow"
+                    android:id="@+id/arrowimg"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:id="@+id/semester_name"
+                    android:textSize = "13dp"/>
+
 
                 <TextView
                     android:id="@+id/unit_name"
-                    android:layout_width="300dp"
+                    android:layout_width="270dp"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/feed_item_profile_name"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_below="@+id/semester_name"/>
 
 
-            </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
 
     </LinearLayout>

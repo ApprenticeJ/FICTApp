@@ -32,19 +32,21 @@ public class UnitFragment extends Fragment {
     private static final String ARG_PAGE = "ARG_PAGE";
     private static final String TAG_ID = "UnitID";
     private static final String TAG_NAME = "UnitName";
-    private static final String TAG_DESC = "UnitDescription";
-    private static final String TAG_YEAR = "UnitYear";
+    private static final String TAG_SEM = "UnitSemester";
     private static  String cID = " ";
+    private static String id = " ";
+    private static String sem = " ";
 
     private int mPage = 0;
     JSONArray jsonArray = null;
 
     ListView listView;
 
-    public static UnitFragment newInstance(int page ) {
+    public static UnitFragment newInstance(int page, String CS) {
         UnitFragment fragment = new UnitFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
+        args.putString("key", StudyUnits.coursecode);
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,15 +54,21 @@ public class UnitFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPage = getArguments().getInt(ARG_PAGE);
+        Bundle bundle = this.getArguments();
+        mPage = bundle.getInt(ARG_PAGE);
+        id = bundle.getString("key");
+
+        //id = bundle.getString("key");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
+        String id3 = getArguments().getString("key");
         units = new ArrayList<HashMap<String, String>>();
         View view = inflater.inflate(R.layout.fragment_unit, container, false);
-        url = "http://gaptwebsite.azurewebsites.net/api/StudyUnits/" + mPage;
+        url = "http://gaptwebsite.azurewebsites.net/api/StudyUnits/" + mPage + "/" + id ;
         new GetUnits().execute();
         listView = (ListView) view;
         return view;
@@ -92,11 +100,13 @@ public class UnitFragment extends Fragment {
 
                         cID = c.getString(TAG_ID);
                         String name = c.getString(TAG_NAME);
+                        sem = "Sem: " + c.getString(TAG_SEM);
                         String nID = cID + ": " + name;
 
                         HashMap<String, String> unit = new HashMap<String, String>();
 
                         unit.put(TAG_ID, nID);
+                        unit.put(TAG_SEM, sem);
                         units.add(unit);
                     }
 
@@ -122,10 +132,12 @@ public class UnitFragment extends Fragment {
                     units,
                     R.layout.single_unit,
                     new String[]{
+                            TAG_SEM,
                             TAG_ID
                     },
 
                     new int[]{
+                            R.id.semester_name,
                             R.id.unit_name
                     }
             );

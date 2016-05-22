@@ -8,6 +8,7 @@ public class UnitPagerAdapter extends FragmentPagerAdapter
     {
         final int PAGE_COUNT = 3;
         private String tabTitles[] = new String[] { "1st Year", "2nd Year", "3rd Year" };
+        private String course;
         private Context context;
 
         public UnitPagerAdapter(FragmentManager fm, Context context) {
@@ -24,7 +25,7 @@ public class UnitPagerAdapter extends FragmentPagerAdapter
         @Override
         public UnitFragment getItem(int position)
         {
-            return UnitFragment.newInstance(position + 1);
+            return UnitFragment.newInstance(position + 1, course);
         }
 
         @Override
