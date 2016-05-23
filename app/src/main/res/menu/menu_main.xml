@@ -16,8 +16,14 @@
         />
 
     <item
+        android:id="@+id/menu_lecturers"
+        android:title="Lecturers"
+        android:onClick="goLecturers"
+        app:showAsAction="never"/>
+
+    <item
         android:id="@+id/menu_newsfeed"
-        android:title="Timetable"
+        android:title="News Feed"
         android:onClick="goNewsFeed"
         app:showAsAction="never"
         />

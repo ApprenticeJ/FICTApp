@@ -54,6 +54,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void goLecturers(MenuItem item)
+    {
+        Intent i = new Intent(MainActivity.this, Lecturers.class);
+        startActivity(i);
+    }
+
     DatabaseHelper hp = new DatabaseHelper(this);
     final String TAG = "MainActivity.java";
     private ProgressDialog progressDialog;
@@ -137,6 +143,9 @@ public class MainActivity extends AppCompatActivity {
                 //Intent p = new Intent(MainActivity.this, Timetable.class);
                 //startActivity(p);
                 goNewsFeed(item);
+                return true;
+            case R.id.menu_lecturers:
+                goLecturers(item);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

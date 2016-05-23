@@ -1,10 +1,14 @@
 package com.example.owner.fictapp;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -40,10 +44,21 @@ public class Lecturers extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lecturers);
 
-        this.url = "http://gaptwebsite.azurewebsites.net/api/Lecturers";
+        this.url = "http://gaptwebsite.azurewebsites.net/api/Lecturers/CIS1107";
         listView = (ListView) findViewById(R.id.listView3);
 
         new GetLecturers().execute();
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto", lEmail, null));
+                startActivity(Intent.createChooser(intent, "Choose an Email client :"));
+
+            }
+        });
     }
 
     private class GetLecturers extends AsyncTask<Void, Void, Void>
@@ -72,14 +87,14 @@ public class Lecturers extends AppCompatActivity {
                         JSONObject c = lecturers.getJSONObject(i);
 
                         lName = c.getString(TAG_NAME);
-                        lSurn = c.getString(TAG_SURN);
-                        lTitle = c.getString(TAG_TITLE);
+                        /*lSurn = c.getString(TAG_SURN);
+                        lTitle = c.getString(TAG_TITLE);*/
                         lEmail = c.getString(TAG_EMAIL);
                         String temp = lTitle + lName + lSurn;
 
                         HashMap<String, String> lecturer = new HashMap<String, String>();
 
-                        lecturer.put(TAG_NAME, temp);
+                        lecturer.put(TAG_NAME, lName);
                         lecturer.put(TAG_EMAIL, lEmail);
                         lecturersList.add(lecturer);
                     }
@@ -123,3 +138,5 @@ public class Lecturers extends AppCompatActivity {
 
     }
 }
+
+
