@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-public class Courses extends AppCompatActivity {
+public class Courses extends MainActivity {
     final String TAG = "Courses.java";
     private ProgressDialog prog;
     private static String url = " ";

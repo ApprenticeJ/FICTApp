@@ -1,6 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:appcompat="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
 
     <item
         android:id="@+id/action_settings"
@@ -25,13 +26,31 @@
         android:id="@+id/menu_newsfeed"
         android:title="News Feed"
         android:onClick="goNewsFeed"
-        app:showAsAction="never"
-        />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/menu_search"
         android:title="@string/menu_search"
-        appcompat:actionViewClass="android.support.v7.widget.SearchView"
-        appcompat:showAsAction="always"/>
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/user"
+        android:icon="@drawable/user"
+        app:showAsAction="ifRoom"
+        android:title="User"
+        android:onClick="goUser">
+    </item>
+
 
 </menu>
+
+<!--menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/miCompose"
+        android:icon="@drawable/user"
+        app:showAsAction="ifRoom"
+        android:title="Compose">
+    </item>
+</menu-->
