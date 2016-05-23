@@ -2,16 +2,22 @@ package com.example.owner.fictapp;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
@@ -35,6 +41,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity
 {
+    DatabaseHelper hp=new DatabaseHelper(this);
     final String TAG="MainActivity.java";
     private ProgressDialog progressDialog;
 
@@ -67,7 +74,9 @@ public class MainActivity extends AppCompatActivity
         this.url="http://gaptwebsite.azurewebsites.net/api/news";
         //this.url="https://graph.facebook.com/v2.6/1048199811920977/events/?&access_token=EAACEdEose0cBAOGylIaU5xkyntpy7ZB4OLgZCkLcgtpSXBdbPOZAMQlZBx5wikPZAS9jpr5MsIN0EYQVcckjh1dZBTiHLJDjA9939V4b3zOcABIcsZAsV2zXGzYELKi7IEuViePqdatxWb4vh8lfzUCmm06W3UVvmgwyPpznOSteAZDZD";
         lv = (ListView) findViewById(R.id.listview1);
-
+        String s=hp.getName();
+        TextView t=(TextView)findViewById(R.id.textView);
+        t.setText(s);
         Button b=(Button) findViewById(R.id.button);
 
             b.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +84,7 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void onClick(View v) {
                     // TODO Auto-generated method stub
-                    Intent i = new Intent(getApplicationContext(), Courses.class);
+                    Intent i = new Intent(MainActivity.this, SignIn.class);
                     startActivity(i);
                 }
             });
@@ -85,6 +94,22 @@ public class MainActivity extends AppCompatActivity
 
         // calling async task to get json values
         new GetEvents().execute();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        // Inflate menu to add items to action bar if it is present.
+        inflater.inflate(R.menu.menu_main, menu);
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.menu_search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
+
+        return true;
     }
 
     // Async task class to get json by making HTTP call

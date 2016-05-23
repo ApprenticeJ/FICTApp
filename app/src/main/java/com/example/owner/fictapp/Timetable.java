@@ -15,8 +15,8 @@ public class Timetable extends AppCompatActivity {
         setContentView(R.layout.activity_timetable2);
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.unitpager1);
-        viewPager.setAdapter(new TimetableAdapter(getSupportFragmentManager(),
-                Timetable.this));
+        //viewPager.setAdapter(new TimetableAdapter(getSupportFragmentManager(),
+                //Timetable.this));
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.unittabs1);
         tabLayout.setupWithViewPager(viewPager);

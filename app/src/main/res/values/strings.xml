@@ -3,4 +3,17 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_search">Search</string>
+    <string name="search_result">Search Result!</string>
+    <string name="search_hint">Type and Search</string>
+    <string name="map_btn">Go to maps</string>
+    <string name="B01_tv">-1B01: Go right from the stairs, first room on your left. </string>
+    <string name="B02_tv">-1B02: Go right from the stairs, second room on your left. </string>
+    <string name="B03_tv">-1B03: Go to right from the stairs, third room on your left</string>
+    <string name="Restroom_tv">Restroom: Go to right from the stairs, go straight then turn left. Second room on your left. </string>
+    <string name="Auditorum_tv">Auditorum: Go right from the stairs, second room on your right.</string>
+    <string name="CommonRoom_tv">Common Room: Go right from the stairs, first room on your right.</string>
+    <string name="B07_tv">-1B07: Go to right from the stairs, go straight.</string>
+    <string name="B06_tv">-1B06: Go to right from the stairs, go straight then turn right. First room on your left</string>
 </resources>
