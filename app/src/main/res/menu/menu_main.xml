@@ -9,6 +9,20 @@
         app:showAsAction="never"/>
 
     <item
+        android:id="@+id/menu_courses"
+        android:title="Courses"
+        android:onClick="goCourses"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/menu_newsfeed"
+        android:title="Timetable"
+        android:onClick="goNewsFeed"
+        app:showAsAction="never"
+        />
+
+    <item
         android:id="@+id/menu_search"
         android:title="@string/menu_search"
         appcompat:actionViewClass="android.support.v7.widget.SearchView"

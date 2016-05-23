@@ -12,6 +12,7 @@ import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -39,10 +40,22 @@ import java.util.HashMap;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class MainActivity extends AppCompatActivity
-{
-    DatabaseHelper hp=new DatabaseHelper(this);
-    final String TAG="MainActivity.java";
+public class MainActivity extends AppCompatActivity {
+
+    public void goCourses(MenuItem item)
+    {
+        Intent i = new Intent(MainActivity.this, Courses.class);
+        startActivity(i);
+    }
+
+    public void goNewsFeed(MenuItem item)
+    {
+        Intent i = new Intent(MainActivity.this, MainActivity.class);
+        startActivity(i);
+    }
+
+    DatabaseHelper hp = new DatabaseHelper(this);
+    final String TAG = "MainActivity.java";
     private ProgressDialog progressDialog;
 
     // url to get json data
@@ -66,28 +79,29 @@ public class MainActivity extends AppCompatActivity
 
     // Hashmap for ListView
     ArrayList<HashMap<String, String>> eventList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //this.url="http://jsonip.com";
-        this.url="http://gaptwebsite.azurewebsites.net/api/news";
+        this.url = "http://gaptwebsite.azurewebsites.net/api/news";
         //this.url="https://graph.facebook.com/v2.6/1048199811920977/events/?&access_token=EAACEdEose0cBAOGylIaU5xkyntpy7ZB4OLgZCkLcgtpSXBdbPOZAMQlZBx5wikPZAS9jpr5MsIN0EYQVcckjh1dZBTiHLJDjA9939V4b3zOcABIcsZAsV2zXGzYELKi7IEuViePqdatxWb4vh8lfzUCmm06W3UVvmgwyPpznOSteAZDZD";
         lv = (ListView) findViewById(R.id.listview1);
-        String s=hp.getName();
-        TextView t=(TextView)findViewById(R.id.textView);
+        String s = hp.getName();
+        TextView t = (TextView) findViewById(R.id.textView);
         t.setText(s);
-        Button b=(Button) findViewById(R.id.button);
+        Button b = (Button) findViewById(R.id.button);
 
-            b.setOnClickListener(new View.OnClickListener() {
+        b.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View v) {
-                    // TODO Auto-generated method stub
-                    Intent i = new Intent(MainActivity.this, SignIn.class);
-                    startActivity(i);
-                }
-            });
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent i = new Intent(MainActivity.this, SignIn.class);
+                startActivity(i);
+            }
+        });
 
         // where we will store the events
         eventList = new ArrayList<HashMap<String, String>>();
@@ -111,6 +125,24 @@ public class MainActivity extends AppCompatActivity
 
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.menu_courses:
+                goCourses(item);
+                return true;
+            case R.id.menu_newsfeed:
+                //Intent p = new Intent(MainActivity.this, Timetable.class);
+                //startActivity(p);
+                goNewsFeed(item);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     // Async task class to get json by making HTTP call
     private class GetEvents extends AsyncTask<Void, Void, Void> {

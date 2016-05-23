@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 /**
  * Created by Julian on 21/05/2016.
  */
-/*public class TimetableAdapter extends FragmentPagerAdapter
+public class TimetableAdapter extends FragmentPagerAdapter
 {
     final int PAGE_COUNT = 5;
     private String tabDays[] = new String[] { "Mon", "Tue", "Wed", "Thur", "Fri" };
@@ -39,4 +39,4 @@ import android.support.v4.app.FragmentPagerAdapter;
     }
 
 
-}*/
+}

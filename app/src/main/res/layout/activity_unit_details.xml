@@ -43,8 +43,7 @@
                     android:textSize="@dimen/feed_item_profile_name"
                     android:layout_marginTop="50dp"
                     android:layout_marginRight="245dp"
-                    android:textStyle="bold"
-                    android:text = "Year: 2"/>
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/sUnit_semester"
@@ -54,8 +53,7 @@
                     android:textStyle="bold"
                     android:layout_marginTop="50dp"
                     android:layout_marginLeft="95dp"
-                    android:layout_marginRight="115dp"
-                    android:text = "Semester: 2"/>
+                    android:layout_marginRight="115dp"/>
 
                 <TextView
                     android:id="@+id/sUnit_credits"
@@ -65,8 +63,7 @@
                     android:textStyle="bold"
                     android:layout_marginTop="50dp"
                     android:layout_marginLeft="220dp"
-                    android:layout_marginRight="0dp"
-                    android:text = "Credits: 24" />
+                    android:layout_marginRight="0dp" />
 
                 <TextView
                     android:id="@+id/sUnit_desc"
