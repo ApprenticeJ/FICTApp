@@ -7,7 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class StudyUnits extends AppCompatActivity {
+public class StudyUnits extends MainActivity {
     public static String coursecode = " ";
 
     @Override

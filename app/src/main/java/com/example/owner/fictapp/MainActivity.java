@@ -6,6 +6,8 @@ import android.app.SearchManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -116,15 +118,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //this.url="http://jsonip.com";
+
+
+
         this.url = "http://gaptwebsite.azurewebsites.net/api/news";
         //this.url="https://graph.facebook.com/v2.6/1048199811920977/events/?&access_token=EAACEdEose0cBAOGylIaU5xkyntpy7ZB4OLgZCkLcgtpSXBdbPOZAMQlZBx5wikPZAS9jpr5MsIN0EYQVcckjh1dZBTiHLJDjA9939V4b3zOcABIcsZAsV2zXGzYELKi7IEuViePqdatxWb4vh8lfzUCmm06W3UVvmgwyPpznOSteAZDZD";
         lv = (ListView) findViewById(R.id.listview1);
         String s = hp.getName();
-        if(s!="no name" && check == true)
+        /*if(s!="no name" && check == true)
         {
             Toast.makeText(getBaseContext(), "Hi " + s, Toast.LENGTH_LONG).show();
             check = false;
-        }
+        }*/
 
         // where we will store the events
         eventList = new ArrayList<HashMap<String, String>>();
@@ -174,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
 
     // Async task class to get json by making HTTP call
@@ -252,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("ServiceHandler", "Couldn't get any data from the url");
             }*/
 
-            if (jsonStr != null) {
+            if (jsonStr != "") {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
@@ -410,6 +416,7 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (IOException e) {
                 // writing exception to log
+
                 e.printStackTrace();
             }
 

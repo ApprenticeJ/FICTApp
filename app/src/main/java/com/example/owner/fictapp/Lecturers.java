@@ -20,7 +20,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Lecturers extends AppCompatActivity {
+public class Lecturers extends MainActivity {
     private final String TAG = "Lecturers.java";
     ProgressDialog prog;
     private static String url = " ";

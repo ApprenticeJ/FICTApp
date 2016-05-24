@@ -9,7 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class UserSettings extends AppCompatActivity {
+public class UserSettings extends MainActivity
+{
     public Spinner spn1;
     public Spinner spn2;
     public AppCompatButton update;

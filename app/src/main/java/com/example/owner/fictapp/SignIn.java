@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class SignIn extends AppCompatActivity {
+public class SignIn extends MainActivity {
 
     DatabaseHelper helper = new DatabaseHelper(this);
     private static final String TAG = "SignupActivity";

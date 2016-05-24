@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 /**
  * Created by Julian on 21/05/2016.
  */
-public class Timetable extends AppCompatActivity {
+public class Timetable extends MainActivity {
 
     public DatabaseHelper hp=new DatabaseHelper(this);
     public static String course="";

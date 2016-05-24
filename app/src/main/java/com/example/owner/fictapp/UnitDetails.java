@@ -16,7 +16,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class UnitDetails extends AppCompatActivity {
+public class UnitDetails extends MainActivity {
     final String TAG = "UnitDetials.java";
     private ProgressDialog prog;
     private static String url = " ";

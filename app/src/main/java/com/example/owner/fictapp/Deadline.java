@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-public class Deadline extends AppCompatActivity {
+public class Deadline extends MainActivity {
     DatabaseHelper hp = new DatabaseHelper(this);
     final String Tag = "Deadline.java";
     private ProgressDialog progressdeadline;
@@ -43,7 +43,7 @@ public class Deadline extends AppCompatActivity {
         setContentView(R.layout.activity_deadline);
 
         listView = (ListView) findViewById(R.id.listViewdeadline);
-        this.url = "http://gaptwebsite.azurewebsites.net/api/StudyUnits/"+hp.getYear()+"/"+hp.getCourse();
+        this.url = "http://gaptwebsite.azurewebsites.net/api/StudyUnits/Deadline/"+hp.getYear()+"/"+hp.getCourse();
 
         new getDeadline().execute();
 
