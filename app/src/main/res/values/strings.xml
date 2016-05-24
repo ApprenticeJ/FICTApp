@@ -16,4 +16,10 @@
     <string name="CommonRoom_tv">Common Room: Go right from the stairs, first room on your right.</string>
     <string name="B07_tv">-1B07: Go to right from the stairs, go straight.</string>
     <string name="B06_tv">-1B06: Go to right from the stairs, go straight then turn right. First room on your left</string>
+    <string-array name="menuItems">
+        <item>My Timetable</item>
+        <item>My Deadlines</item>
+        <item>My Lecturers</item>
+        <item>Settings</item>
+    </string-array>
 </resources>

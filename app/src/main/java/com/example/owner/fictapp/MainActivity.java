@@ -21,6 +21,7 @@ import android.widget.ListView;
 
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,11 +43,32 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity {
 
+    public void goMap(MenuItem item)
+    {
+        Intent i = new Intent(MainActivity.this, Map.class);
+        startActivity(i);
+    }
+
     public void goCourses(MenuItem item)
     {
         Intent i = new Intent(MainActivity.this, Courses.class);
         startActivity(i);
     }
+
+    public void goUser(MenuItem item)
+    {
+        if(hp.getName()=="no name")
+        {
+            Intent i = new Intent(MainActivity.this, SignIn.class);
+            startActivity(i);
+        }
+        else
+        {
+            Intent i = new Intent(MainActivity.this, UserChoice.class);
+            startActivity(i);
+        }
+    }
+
 
     public void goNewsFeed(MenuItem item)
     {
@@ -59,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(MainActivity.this, Lecturers.class);
         startActivity(i);
     }
+
 
     DatabaseHelper hp = new DatabaseHelper(this);
     final String TAG = "MainActivity.java";
@@ -95,19 +118,10 @@ public class MainActivity extends AppCompatActivity {
         //this.url="https://graph.facebook.com/v2.6/1048199811920977/events/?&access_token=EAACEdEose0cBAOGylIaU5xkyntpy7ZB4OLgZCkLcgtpSXBdbPOZAMQlZBx5wikPZAS9jpr5MsIN0EYQVcckjh1dZBTiHLJDjA9939V4b3zOcABIcsZAsV2zXGzYELKi7IEuViePqdatxWb4vh8lfzUCmm06W3UVvmgwyPpznOSteAZDZD";
         lv = (ListView) findViewById(R.id.listview1);
         String s = hp.getName();
-        TextView t = (TextView) findViewById(R.id.textView);
-        t.setText(s);
-        Button b = (Button) findViewById(R.id.button);
-
-        b.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Intent i = new Intent(MainActivity.this, SignIn.class);
-                startActivity(i);
-            }
-        });
+        if(s!="no name")
+        {
+            Toast.makeText(getBaseContext(), "Hi " + s, Toast.LENGTH_LONG).show();
+        }
 
         // where we will store the events
         eventList = new ArrayList<HashMap<String, String>>();
@@ -135,18 +149,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
-        switch (item.getItemId()) {
+        switch (item.getItemId())
+        {
+            case R.id.menu_map:
+                goMap(item);
+                return true;
+            case R.id.user:
+                goUser(item);
+                return true;
             case R.id.menu_courses:
                 goCourses(item);
                 return true;
             case R.id.menu_newsfeed:
-                //Intent p = new Intent(MainActivity.this, Timetable.class);
-                //startActivity(p);
                 goNewsFeed(item);
                 return true;
-            case R.id.menu_lecturers:
+            /*case R.id.menu_lecturers:
                 goLecturers(item);
-                return true;
+                return true;*/
+
             default:
                 return super.onOptionsItemSelected(item);
         }

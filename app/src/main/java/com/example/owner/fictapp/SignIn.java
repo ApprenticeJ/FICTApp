@@ -2,6 +2,7 @@ package com.example.owner.fictapp;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -64,11 +65,28 @@ public class SignIn extends AppCompatActivity {
         String name = editname.getEditText().getText().toString();
         String email = editemail.getEditText().getText().toString();
         String password = editpassword.getEditText().getText().toString();
+        String course = dropdown.getSelectedItem().toString();
+        String year = dropdown2.getSelectedItem().toString();
+        int yearInt=0;
+        if(year=="1st Year")
+        {
+           yearInt=1;
+        }
+        else if(year=="2nd Year")
+        {
+            yearInt=2;
+        }
+        else if(year=="3rd Year")
+        {
+            yearInt=3;
+        }
 
         Users u=new Users();
         u.setname(name);
         u.setemail(email);
         u.setPassword(password);
+        u.setCourse(course);
+        u.setYear(yearInt);
         helper.insertUsers(u);
 
         new android.os.Handler().postDelayed(
@@ -87,6 +105,8 @@ public class SignIn extends AppCompatActivity {
         submit.setEnabled(true);
         setResult(RESULT_OK, null);
         finish();
+        Intent i = new Intent(SignIn.this, UserChoice.class);
+        startActivity(i);
     }
 
     public void onSignupFailed() {

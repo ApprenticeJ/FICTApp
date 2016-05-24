@@ -2,13 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
-    <item
-        android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        app:showAsAction="never"/>
-
     <item
         android:id="@+id/menu_courses"
         android:title="Courses"
@@ -17,9 +10,9 @@
         />
 
     <item
-        android:id="@+id/menu_lecturers"
-        android:title="Lecturers"
-        android:onClick="goLecturers"
+        android:id="@+id/menu_map"
+        android:title="Map"
+        android:onClick="goMap"
         app:showAsAction="never"/>
 
     <item

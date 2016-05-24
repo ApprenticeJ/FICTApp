@@ -27,7 +27,6 @@ public class Timetables extends Fragment {
     final String TAG = "Timetable.java";
     private ProgressDialog progress;
     private static String url = "";
-
     ArrayList<HashMap<String, String>> timetables=new ArrayList<HashMap<String, String>>();
     ListView lv;
     JSONArray timetable = null;
@@ -49,6 +48,7 @@ public class Timetables extends Fragment {
 
     // TODO: Rename and change types and number of parameters
     public static Timetables newInstance(int page) {
+
         Timetables fragment = new Timetables();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1,page);
@@ -67,7 +67,7 @@ public class Timetables extends Fragment {
                              Bundle savedInstanceState) {
         timetables = new ArrayList<HashMap<String, String>>();
         View view = inflater.inflate(R.layout.fragment_timetables, container, false);
-        url = "http://gaptwebsite.azurewebsites.net/api/TimetableApp/1/CIS/" + tPage;
+        url = "http://gaptwebsite.azurewebsites.net/api/TimetableApp/" + Timetable.year + "/" + Timetable.course + "/" + tPage;
         new getTimetable().execute();
         lv = (ListView) view;
         return view;

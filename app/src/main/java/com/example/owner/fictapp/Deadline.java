@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class Deadline extends AppCompatActivity {
+    DatabaseHelper hp = new DatabaseHelper(this);
     final String Tag = "Deadline.java";
     private ProgressDialog progressdeadline;
     private static String url = "http://gaptwebsite.azurewebsites.net/api/StudyUnits/2/CIS";
@@ -42,7 +43,7 @@ public class Deadline extends AppCompatActivity {
         setContentView(R.layout.activity_deadline);
 
         listView = (ListView) findViewById(R.id.listViewdeadline);
-        this.url = "http://gaptwebsite.azurewebsites.net/api/StudyUnits/2/CIS";
+        this.url = "http://gaptwebsite.azurewebsites.net/api/StudyUnits/"+hp.getYear()+"/"+hp.getCourse();
 
         new getDeadline().execute();
 

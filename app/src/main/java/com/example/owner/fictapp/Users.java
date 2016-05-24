@@ -5,7 +5,7 @@ package com.example.owner.fictapp;
  */
 public class Users
 {
-    int year;
+    static int year;
     static String name,email,password,course;
 
 
@@ -25,7 +25,7 @@ public class Users
         this.email=emailIn;
     }
 
-    public String getEmail()
+    public static String getEmail()
     {
         return email;
     }
@@ -35,7 +35,7 @@ public class Users
         this.password=passwordIn;
     }
 
-    public String getPassword()
+    public static String getPassword()
     {
         return password;
     }
@@ -45,7 +45,7 @@ public class Users
         this.course=courseIn;
     }
 
-    public String getCourse()
+    public static String getCourse()
     {
         return course;
     }
@@ -55,7 +55,7 @@ public class Users
         this.year=yearIn;
     }
 
-    public int getYear()
+    public static int getYear()
     {
         return year;
     }

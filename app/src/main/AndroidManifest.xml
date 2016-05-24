@@ -16,21 +16,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".Courses" />
+        <activity android:name=".Deadline" />
         <activity android:name=".StudyUnits" />
-        <activity android:name=".Timetable"/>
-        <activity android:name=".SignIn"/>
-        <activity android:name=".Lecturers"/>
-        <activity android:name=".UnitDetails"/>
-
+        <activity android:name=".Timetable" />
+        <activity android:name=".SignIn" />
+        <activity android:name=".Lecturers" />
+        <activity android:name=".UnitDetails" />
+        <activity android:name=".UserChoice" />
+        <activity android:name=".Map" />
+        <activity android:name=".UserSettings"></activity>
     </application>
 
 </manifest>

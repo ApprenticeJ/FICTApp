@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
     private static final String COLUMN_YEAR="year";
     SQLiteDatabase db;
     private static final String TABLE_CREATE="create table users (id integer primary key not null, " +
-            "name text not null, email text not null, password text not null);";
+            "name text not null, email text not null, password text not null, course text not null, year int not null);";
 
     public DatabaseHelper(Context context)
     {
@@ -51,6 +51,36 @@ public class DatabaseHelper extends SQLiteOpenHelper
         }
     }
 
+    public String getCourse()
+    {
+        db=this.getReadableDatabase();
+        String query="select course from " + TABLE_NAME;
+        Cursor cursor=db.rawQuery(query,null);
+        if(cursor.moveToFirst())
+        {
+            return cursor.getString(0);
+        }
+        else
+        {
+            return "no course";
+        }
+    }
+
+    public String getYear()
+    {
+        db=this.getReadableDatabase();
+        String query="select year from " + TABLE_NAME;
+        Cursor cursor=db.rawQuery(query,null);
+        if(cursor.moveToFirst())
+        {
+            return cursor.getString(0);
+        }
+        else
+        {
+            return "no course";
+        }
+    }
+
     public void insertUsers(Users u)
     {
         db=this.getWritableDatabase();
@@ -64,10 +94,20 @@ public class DatabaseHelper extends SQLiteOpenHelper
         values.put(COLUMN_NAME,u.getName());
         values.put(COLUMN_EMAIL,u.getEmail());
         values.put(COLUMN_PASSWORD,u.getPassword());
-        //values.put(COLUMN_COURSE,"CCE");
-        //values.put(COLUMN_YEAR,1);
+        values.put(COLUMN_COURSE,u.getCourse());
+        values.put(COLUMN_YEAR,u.getYear());
         db.insert(TABLE_NAME, null, values);
         db.close();
+    }
+
+    public boolean updateData(String course,int year)
+    {
+        db=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put(COLUMN_COURSE,course);
+        values.put(COLUMN_YEAR,year);
+        db.update(TABLE_NAME,values, "id=0", null);
+        return true;
     }
 
     @Override
