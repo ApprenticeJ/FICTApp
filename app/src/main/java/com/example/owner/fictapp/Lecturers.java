@@ -28,12 +28,14 @@ public class Lecturers extends AppCompatActivity {
     private static String lSurn = " ";
     private static String lTitle = " ";
     private static String lEmail = " ";
+    private static String uID = " ";
 
     ArrayList<HashMap<String, String>> lecturersList = new ArrayList<HashMap<String, String>>();
+    private static ArrayList<String> emailList = new ArrayList<String>();
 
     private static final String TAG_NAME = "LecturerName";
-    private static final String TAG_SURN = "LecturerSurn";
-    private static final String TAG_TITLE = "LecturerTitle";
+    private static final String TAG_SURN = "LecturerSurname";
+    private static final String TAG_TITLE = "Title";
     private static final String TAG_EMAIL = "LecturerEmail";
 
     ListView listView;
@@ -44,7 +46,9 @@ public class Lecturers extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lecturers);
 
-        this.url = "http://gaptwebsite.azurewebsites.net/api/Lecturers/CIS1107";
+        uID = getIntent().getExtras().getString("id");
+
+        this.url = "http://gaptwebsite.azurewebsites.net/api/Lecturers/" + uID;
         listView = (ListView) findViewById(R.id.listView3);
 
         new GetLecturers().execute();
@@ -54,7 +58,7 @@ public class Lecturers extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                        "mailto", lEmail, null));
+                        "mailto", emailList.get(position), null));
                 startActivity(Intent.createChooser(intent, "Choose an Email client :"));
 
             }
@@ -87,14 +91,15 @@ public class Lecturers extends AppCompatActivity {
                         JSONObject c = lecturers.getJSONObject(i);
 
                         lName = c.getString(TAG_NAME);
-                        /*lSurn = c.getString(TAG_SURN);
-                        lTitle = c.getString(TAG_TITLE);*/
+                        lSurn = c.getString(TAG_SURN);
+                        lTitle = c.getString(TAG_TITLE);
                         lEmail = c.getString(TAG_EMAIL);
-                        String temp = lTitle + lName + lSurn;
+                        emailList.add(lEmail);
+                        String temp = lTitle + " " + lName + lSurn;
 
                         HashMap<String, String> lecturer = new HashMap<String, String>();
 
-                        lecturer.put(TAG_NAME, lName);
+                        lecturer.put(TAG_NAME, temp);
                         lecturer.put(TAG_EMAIL, lEmail);
                         lecturersList.add(lecturer);
                     }

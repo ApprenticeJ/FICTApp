@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
     // events JSONArray
     JSONArray events = null;
     ListView lv;
+    public boolean check = true;
 
     // Hashmap for ListView
     ArrayList<HashMap<String, String>> eventList;
@@ -119,9 +120,10 @@ public class MainActivity extends AppCompatActivity {
         //this.url="https://graph.facebook.com/v2.6/1048199811920977/events/?&access_token=EAACEdEose0cBAOGylIaU5xkyntpy7ZB4OLgZCkLcgtpSXBdbPOZAMQlZBx5wikPZAS9jpr5MsIN0EYQVcckjh1dZBTiHLJDjA9939V4b3zOcABIcsZAsV2zXGzYELKi7IEuViePqdatxWb4vh8lfzUCmm06W3UVvmgwyPpznOSteAZDZD";
         lv = (ListView) findViewById(R.id.listview1);
         String s = hp.getName();
-        if(s!="no name")
+        if(s!="no name" && check == true)
         {
             Toast.makeText(getBaseContext(), "Hi " + s, Toast.LENGTH_LONG).show();
+            check = false;
         }
 
         // where we will store the events

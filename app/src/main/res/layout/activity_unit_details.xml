@@ -85,10 +85,18 @@
                     android:paddingTop="@dimen/feed_item_status_pad_top"
                     android:layout_below="@+id/sUnit_desc"/>
 
-
-
-
-
+                <TextView
+                    android:id="@+id/sUnit_lecturer"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="@dimen/feed_item_status_pad_left_right"
+                    android:paddingRight="@dimen/feed_item_status_pad_left_right"
+                    android:paddingTop="@dimen/feed_item_status_pad_top"
+                    android:layout_below="@+id/sUnit_elective"
+                    android:textStyle="bold"
+                    android:textColor="@color/darkblue"
+                    android:text="View Unit Lecturers"/>
 
             </RelativeLayout>
         </LinearLayout>

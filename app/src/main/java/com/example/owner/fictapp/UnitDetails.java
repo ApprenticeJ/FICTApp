@@ -1,10 +1,12 @@
 package com.example.owner.fictapp;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -42,6 +44,7 @@ public class UnitDetails extends AppCompatActivity {
     TextView tx4;
     TextView tx5;
     TextView tx6;
+    TextView lect;
 
     JSONArray array = null;
 
@@ -54,6 +57,19 @@ public class UnitDetails extends AppCompatActivity {
         int page = getIntent().getExtras().getInt("page");
         this.url = "http://gaptwebsite.azurewebsites.net/api/StudyUnits/" + unitCode;
         new getDetails().execute();
+
+        lect = (TextView) findViewById(R.id.sUnit_lecturer);
+        lect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UnitDetails.this, Lecturers.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("id", uId);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private class getDetails extends AsyncTask<Void, Void, Void>
