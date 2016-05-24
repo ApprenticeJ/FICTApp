@@ -3,6 +3,7 @@ package com.example.owner.fictapp;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -141,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         SearchView searchView =
                 (SearchView) menu.findItem(R.id.menu_search).getActionView();
         searchView.setSearchableInfo(
-                searchManager.getSearchableInfo(getComponentName()));
+                searchManager.getSearchableInfo(new ComponentName(this, Map.class)));
 
         return true;
     }
