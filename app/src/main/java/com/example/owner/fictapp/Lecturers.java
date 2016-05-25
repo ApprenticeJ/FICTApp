@@ -61,9 +61,11 @@ public class Lecturers extends MainActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                        "mailto", emailList.get(position), null));
-                startActivity(Intent.createChooser(intent, "Choose an Email client :"));
+                    Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                            "mailto", emailList.get(position), null));
+                    startActivity(Intent.createChooser(intent, "Choose an Email client :"));
+
+
 
             }
         });
@@ -94,8 +96,8 @@ public class Lecturers extends MainActivity {
                         JSONObject c = lecturers.getJSONObject(i);
 
                         lName = c.getString(TAG_NAME);
-                        //lSurn = c.getString(TAG_SURN);
-                        //lTitle = c.getString(TAG_TITLE);
+                        lSurn = c.getString(TAG_SURN);
+                        lTitle = c.getString(TAG_TITLE);
                         lEmail = c.getString(TAG_EMAIL);
                         emailList.add(lEmail);
                         String temp = lTitle + " " + lName + lSurn;
@@ -130,12 +132,10 @@ public class Lecturers extends MainActivity {
                     R.layout.single_lecturer,
                     new String[]{
                             TAG_NAME,
-                            TAG_EMAIL
                     },
 
                     new int[]{
                             R.id.lecturer_name,
-                            R.id.lectuer_email
                     }
             );
 

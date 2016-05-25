@@ -51,7 +51,8 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity android:name=".UserSettings" />
-        <activity android:name=".CurrentUnits"></activity>
+        <activity android:name=".CurrentUnits" />
+        <activity android:name=".EmailForm"></activity>
     </application>
 
 </manifest>

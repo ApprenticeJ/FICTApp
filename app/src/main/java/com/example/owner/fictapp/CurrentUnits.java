@@ -55,7 +55,7 @@ public class CurrentUnits extends AppCompatActivity {
         year = hp.getYear();
         course = hp.getCourse();
 
-        this.url = "http://gaptwebsite.azurewebsites.net/api/StudyUnits/" + year + "/" + course;
+        this.url = "http://gaptwebsite.azurewebsites.net/api/StudyUnits/Current/Units/" + year + "/" + course;
         listView = (ListView) findViewById(R.id.listView4);
         new GetCurrentUnits().execute();
 

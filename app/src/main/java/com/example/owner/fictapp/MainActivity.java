@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
     // events JSONArray
     JSONArray events = null;
     ListView lv;
-    private boolean check = true;
+    public boolean check = false;
 
     // Hashmap for ListView
     ArrayList<HashMap<String, String>> eventList;
