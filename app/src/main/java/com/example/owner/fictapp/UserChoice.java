@@ -31,6 +31,10 @@ public class UserChoice extends MainActivity
                             Intent myIntent1 = new Intent(UserChoice.this, Deadline.class);
                             startActivity(myIntent1);
                             break;
+                    case 2:
+                            Intent myIntent2 = new Intent(UserChoice.this, CurrentUnits.class);
+                            startActivity(myIntent2);
+                            break;
                     case 3:
                             Intent myIntent3 = new Intent(UserChoice.this, UserSettings.class);
                             startActivity(myIntent3);

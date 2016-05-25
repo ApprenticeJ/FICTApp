@@ -29,9 +29,11 @@ public class Lecturers extends MainActivity {
     private static String lTitle = " ";
     private static String lEmail = " ";
     private static String uID = " ";
+    private static String cID = " ";
 
     ArrayList<HashMap<String, String>> lecturersList = new ArrayList<HashMap<String, String>>();
     private static ArrayList<String> emailList = new ArrayList<String>();
+    ArrayList<HashMap<String, String>> sList = new ArrayList<HashMap<String, String>>();
 
     private static final String TAG_NAME = "LecturerName";
     private static final String TAG_SURN = "LecturerSurname";
@@ -40,6 +42,7 @@ public class Lecturers extends MainActivity {
 
     ListView listView;
     JSONArray lecturers = null;
+    JSONArray jsonArray = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class Lecturers extends MainActivity {
 
         this.url = "http://gaptwebsite.azurewebsites.net/api/Lecturers/" + uID;
         listView = (ListView) findViewById(R.id.listView3);
+
 
         new GetLecturers().execute();
 
@@ -65,8 +69,7 @@ public class Lecturers extends MainActivity {
         });
     }
 
-    private class GetLecturers extends AsyncTask<Void, Void, Void>
-    {
+    private class GetLecturers extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -91,8 +94,8 @@ public class Lecturers extends MainActivity {
                         JSONObject c = lecturers.getJSONObject(i);
 
                         lName = c.getString(TAG_NAME);
-                        lSurn = c.getString(TAG_SURN);
-                        lTitle = c.getString(TAG_TITLE);
+                        //lSurn = c.getString(TAG_SURN);
+                        //lTitle = c.getString(TAG_TITLE);
                         lEmail = c.getString(TAG_EMAIL);
                         emailList.add(lEmail);
                         String temp = lTitle + " " + lName + lSurn;
@@ -112,17 +115,16 @@ public class Lecturers extends MainActivity {
             return null;
         }
 
+
         @Override
-        protected void onPostExecute(Void result)
-        {
+        protected void onPostExecute(Void result) {
             super.onPreExecute();
 
-            if(prog.isShowing())
-            {
+            if (prog.isShowing()) {
                 prog.dismiss();
             }
 
-            ListAdapter  listAdapter = new SimpleAdapter(
+            ListAdapter listAdapter = new SimpleAdapter(
                     Lecturers.this,
                     lecturersList,
                     R.layout.single_lecturer,
@@ -131,7 +133,7 @@ public class Lecturers extends MainActivity {
                             TAG_EMAIL
                     },
 
-                    new int[] {
+                    new int[]{
                             R.id.lecturer_name,
                             R.id.lectuer_email
                     }
@@ -139,9 +141,10 @@ public class Lecturers extends MainActivity {
 
             listView.setAdapter(listAdapter);
         }
-
-
     }
 }
+
+
+
 
 

@@ -88,15 +88,15 @@ public class UnitFragment extends Fragment {
                 Bundle b = new Bundle();
                 if(mPage == 1)
                 {
-                    b.putString("sID", first.get(position));
+                    b.putString("id", first.get(position));
                 }
                 else if(mPage == 2)
                 {
-                    b.putString("sID", second.get(position));
+                    b.putString("id", second.get(position));
                 }
                 else
                 {
-                    b.putString("sID", third.get(position));
+                    b.putString("id", third.get(position));
                 }
 
                 intent.putExtras(b);
@@ -106,7 +106,7 @@ public class UnitFragment extends Fragment {
         return view;
     }
 
-    private class GetUnits extends AsyncTask<Void, Void, Void> {
+    protected class GetUnits extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();

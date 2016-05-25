@@ -15,16 +15,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-                  android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
             <meta-data
                 android:name="android.app.searchable"
-                android:value=".Map"/>
+                android:value=".Map" />
         </activity>
         <activity android:name=".Courses" />
         <activity android:name=".Deadline" />
@@ -34,20 +36,22 @@
         <activity android:name=".Lecturers" />
         <activity android:name=".UnitDetails" />
         <activity android:name=".UserChoice" />
-        <activity android:name=".Map"
-                  android:label="Search"
-                  android:theme="@style/AppTheme">
-
+        <activity
+            android:name=".Map"
+            android:label="Search"
+            android:theme="@style/AppTheme">
             <intent-filter>
-                <action android:name="android.intent.action.SEARCH"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.SEARCH" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
             <meta-data
                 android:name="android.app.searchable"
-                android:resource="@xml/searchable"/>
+                android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".UserSettings"></activity>
+        <activity android:name=".UserSettings" />
+        <activity android:name=".CurrentUnits"></activity>
     </application>
 
 </manifest>

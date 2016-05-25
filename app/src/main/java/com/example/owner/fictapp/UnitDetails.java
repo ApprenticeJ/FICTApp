@@ -53,7 +53,7 @@ public class UnitDetails extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unit_details);
-        String unitCode = getIntent().getExtras().getString("sID");
+        String unitCode = getIntent().getExtras().getString("id");
         int page = getIntent().getExtras().getInt("page");
         this.url = "http://gaptwebsite.azurewebsites.net/api/StudyUnits/" + unitCode;
         new getDetails().execute();
@@ -67,7 +67,7 @@ public class UnitDetails extends MainActivity {
                 bundle.putString("id", uId);
                 intent.putExtras(bundle);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
     }
