@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
     JSONArray events = null;
     ListView lv;
     public boolean check = false;
+    public boolean netCheck;
 
     // Hashmap for ListView
     ArrayList<HashMap<String, String>> eventList;
@@ -118,6 +119,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //this.url="http://jsonip.com";
+        if(!checkNetwork(getApplicationContext()))
+        {
+            Toast.makeText(MainActivity.this, "No Internet Connection", Toast.LENGTH_LONG).show();
+        }
+
 
 
 
@@ -422,6 +428,25 @@ public class MainActivity extends AppCompatActivity {
 
             return chaine.toString();
         }
+    }
+
+    public static boolean checkNetwork(Context context)
+    {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
+        if(cm != null)
+        {
+            NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+            if(networkInfo != null)
+            {
+                if(networkInfo.isConnected())
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+
     }
 
 }

@@ -8,10 +8,12 @@ import android.util.Log;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -34,6 +36,7 @@ public class Deadline extends MainActivity {
     ArrayList<HashMap<String, String>> deadlineList = new ArrayList<HashMap<String, String>>();
 
     ListView listView;
+    TextView empty;
     JSONArray deadline = null;
 
 
@@ -44,6 +47,7 @@ public class Deadline extends MainActivity {
 
         listView = (ListView) findViewById(R.id.listViewdeadline);
         this.url = "http://gaptwebsite.azurewebsites.net/api/StudyUnits/Deadline/"+hp.getYear()+"/"+hp.getCourse();
+
 
         new getDeadline().execute();
 
